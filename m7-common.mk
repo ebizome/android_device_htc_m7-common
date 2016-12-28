@@ -85,6 +85,7 @@ PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/configs/media_profiles.xml:system/etc/media_profiles.xml
 
 # NFC
+ifneq ($(TARGET_DEVICE),m7wlj)
 PRODUCT_PACKAGES += \
     com.android.nfc_extras \
     libnfc \
@@ -102,6 +103,7 @@ else
 endif
 PRODUCT_COPY_FILES += \
     $(NFCEE_ACCESS_PATH):system/etc/nfcee_access.xml
+endif
 
 # Permissions
 PRODUCT_COPY_FILES += \

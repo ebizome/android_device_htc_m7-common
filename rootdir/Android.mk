@@ -1,5 +1,6 @@
 LOCAL_PATH := $(call my-dir)
 
+ifneq ($(TARGET_DEVICE),m7wlj)
 include $(CLEAR_VARS)
 LOCAL_MODULE		:= fstab.qcom
 LOCAL_MODULE_TAGS	:= optional eng
@@ -7,6 +8,17 @@ LOCAL_MODULE_CLASS	:= ETC
 LOCAL_SRC_FILES		:= etc/fstab.qcom
 LOCAL_MODULE_PATH	:= $(TARGET_ROOT_OUT)
 include $(BUILD_PREBUILT)
+endif
+
+ifeq ($(TARGET_DEVICE),m7wlj)
+include $(CLEAR_VARS)
+LOCAL_MODULE		:= fstab.qcom
+LOCAL_MODULE_TAGS	:= optional eng
+LOCAL_MODULE_CLASS	:= ETC
+LOCAL_SRC_FILES		:= etc/fstab.qcom.wlj
+LOCAL_MODULE_PATH	:= $(TARGET_ROOT_OUT)
+include $(BUILD_PREBUILT)
+endif
 
 ifneq ($(filter m7 m7att m7tmo m7ul,$(TARGET_DEVICE)),)
 include $(CLEAR_VARS)
@@ -28,12 +40,12 @@ LOCAL_MODULE_PATH	:= $(TARGET_ROOT_OUT)
 include $(BUILD_PREBUILT)
 endif
 
-ifeq ($(TARGET_DEVICE),m7spr)
+ifneq ($(filter m7spr m7wlj,$(TARGET_DEVICE)),)
 include $(CLEAR_VARS)
 LOCAL_MODULE		:= init.target.rc
 LOCAL_MODULE_TAGS	:= optional eng
 LOCAL_MODULE_CLASS	:= ETC
-LOCAL_SRC_FILES		:= etc/init.target.rc.spr
+LOCAL_SRC_FILES		:= etc/init.target.rc.cdma
 LOCAL_MODULE_PATH	:= $(TARGET_ROOT_OUT)
 include $(BUILD_PREBUILT)
 endif
