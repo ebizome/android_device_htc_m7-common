@@ -49,10 +49,6 @@ PRODUCT_PACKAGES += \
     libcamera_shim \
     Snap
 
-# Gello
-PRODUCT_PACKAGES += \
-    Gello
-
 # GPS
 PRODUCT_PACKAGES += \
     gps.msm8960
